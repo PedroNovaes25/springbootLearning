@@ -1,0 +1,14 @@
+Comandos entityManager
+
+Abrindo conexão com o banco // OBS: só é necessário abrir transaction quando for fazer uma alteração no banco
+em.getTransaction().begin();
+
+Adiciona dados ao banco
+em.persist(obejtoParaADCNoBd)
+
+Fecha conexão com o banco
+em.getTransation().commit(); 
+
+Select por id
+Classe c = em.find(Classe.class, id)
+
