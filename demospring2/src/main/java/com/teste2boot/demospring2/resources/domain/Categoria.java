@@ -7,14 +7,22 @@ package com.teste2boot.demospring2.resources.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author guita
  */
+
+@Entity
 public class Categoria implements Serializable{
     private static final long serialVersionUID = 1L;
     
+    @Id //sempre importar javax
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
 
@@ -22,6 +30,7 @@ public class Categoria implements Serializable{
     }
 
     public Categoria(Integer id, String nome) {
+        super();
         this.id = id;
         this.nome = nome;
     }
