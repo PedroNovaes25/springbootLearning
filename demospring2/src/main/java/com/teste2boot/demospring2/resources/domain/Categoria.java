@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Categoria implements Serializable{
     private Integer id;
     private String nome;
     
+    @JsonManagedReference //essa definição fica do lado que vc quer que venha os objetos associados
     @ManyToMany(mappedBy="categorias") //Aqui eu defino que um dos lados do mapeamento
     private List<Produto> produtos = new ArrayList<>();
 

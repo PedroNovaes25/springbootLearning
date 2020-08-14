@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,8 @@ public class Produto implements Serializable{
     private String nome;
     private Double preco;
     
+    
+    @JsonBackReference // define que no outro lado da associação ja foram buscados os objetos 
     @ManyToMany //Fazendo um mapeamento muitos para muitos
     @JoinTable(name = "PRODUTO_CATEGORIA", 
             joinColumns = @JoinColumn(name= "produto_id"),

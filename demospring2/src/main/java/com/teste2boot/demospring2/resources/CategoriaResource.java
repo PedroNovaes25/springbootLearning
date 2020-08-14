@@ -7,8 +7,6 @@ package com.teste2boot.demospring2.resources;
 
 import com.teste2boot.demospring2.resources.domain.Categoria;
 import com.teste2boot.demospring2.services.CategoriaService;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
