@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -32,6 +33,7 @@ public class Endereco implements Serializable {
     private String bairro;
     private String cep;
 
+    @JsonBackReference //Aqui está dizendo que o endereço não pode serializar o cliente, se ocorrerá loop
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;

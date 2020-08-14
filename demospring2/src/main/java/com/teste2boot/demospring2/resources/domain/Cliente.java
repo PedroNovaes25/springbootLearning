@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teste2boot.demospring2.resources.domain.enums.TipoCliente;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class Cliente implements Serializable{
     private String cpfOuCnpj;
     private Integer tipo;
     
+    @JsonManagedReference //A classe cliente pode serializar o enderço, mas não pode o contrario (se não vira loop)
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
     
