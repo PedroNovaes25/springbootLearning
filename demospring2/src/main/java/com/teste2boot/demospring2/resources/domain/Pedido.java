@@ -5,6 +5,8 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -32,11 +34,15 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
+    
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date instante;
 
+    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido") //Mapeamento Bidirecional
     private Pagamento pagamento;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;

@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teste2boot.demospring2.resources.domain.enums.TipoCliente;
 import java.io.Serializable;
@@ -46,6 +47,7 @@ public class Cliente implements Serializable{
     @CollectionTable(name="TELEFONE") //entidade fraca (sem ID)
     private Set<String> telefones = new HashSet<>(); // set<> não permite repetição
 
+    @JsonBackReference
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
     

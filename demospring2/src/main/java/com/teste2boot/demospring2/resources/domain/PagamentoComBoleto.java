@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.teste2boot.demospring2.resources.domain.enums.EstadoPagamento;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -17,8 +18,10 @@ import javax.persistence.Entity;
 public class PagamentoComBoleto extends Pagamento {
 
     private static final long serialVersionUID = 1L;
-    
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataVencimento;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataPagamento;
 
     public PagamentoComBoleto() {
@@ -46,7 +49,4 @@ public class PagamentoComBoleto extends Pagamento {
         this.dataPagamento = dataPagamento;
     }
 
- 
-
-    
 }

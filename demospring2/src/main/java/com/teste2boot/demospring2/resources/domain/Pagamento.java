@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.teste2boot.demospring2.resources.domain.enums.EstadoPagamento;
 import java.io.Serializable;
 import java.util.Objects;
@@ -21,7 +22,7 @@ import javax.persistence.OneToOne;
  * @author guita
  */
 
-@Entity
+@Entity //Tudo que começa com get é entendido que deverá ser serializado
 @Inheritance(strategy = InheritanceType.JOINED) //Aqui define como será criado as tabelas no BD (InheritanceType.FormatoDaCriação)
 public abstract class Pagamento implements Serializable {
 
@@ -31,6 +32,7 @@ public abstract class Pagamento implements Serializable {
     private Integer id;
     private Integer estado;
     
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name="pedido_id")
     @MapsId //A classe pagamento e Pedido possui o mesmo Id

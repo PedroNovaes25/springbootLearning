@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.EmbeddedId;
@@ -17,10 +18,11 @@ import javax.persistence.Entity;
 //Classe Associativa junto com a itemPedidoPk
 
 @Entity
-public class ItemPedido implements Serializable {
+public class ItemPedido implements Serializable { //Tudo que começa com get é entendido que deverá ser serializado
 
     private static final long serialVersionUID = 1L;
     
+    @JsonIgnore
     @EmbeddedId //Define que esse atributo é um id embutido em um tipo auxiliar
     private ItemPedidoPk id = new ItemPedidoPk();
     
@@ -40,11 +42,11 @@ public class ItemPedido implements Serializable {
         this.preco = preco;
     }
     
-    
+    @JsonIgnore
     public Pedido getPedido(){
         return id.getPedido();
     }
-    
+   
     public Produto getproduto(){
         return id.getProduto();
     }
