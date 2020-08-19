@@ -6,6 +6,7 @@
 package com.teste2boot.demospring2.resources.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class Estado implements Serializable {
     private Integer Id;
     private String nome;
 
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "estado")
     List<Cidade> cidades = new ArrayList<>();
 

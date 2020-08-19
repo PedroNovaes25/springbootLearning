@@ -38,11 +38,11 @@ public class Pedido implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date instante;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido") //Mapeamento Bidirecional
     private Pagamento pagamento;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;

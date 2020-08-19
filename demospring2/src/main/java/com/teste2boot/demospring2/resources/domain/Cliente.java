@@ -6,6 +6,7 @@
 package com.teste2boot.demospring2.resources.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teste2boot.demospring2.resources.domain.enums.TipoCliente;
 import java.io.Serializable;
@@ -39,7 +40,7 @@ public class Cliente implements Serializable{
     private String cpfOuCnpj;
     private Integer tipo;
     
-    @JsonManagedReference //A classe cliente pode serializar o enderço, mas não pode o contrario (se não vira loop)
+//    @JsonManagedReference //A classe cliente pode serializar o enderço, mas não pode o contrario (se não vira loop)
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
     
@@ -47,7 +48,8 @@ public class Cliente implements Serializable{
     @CollectionTable(name="TELEFONE") //entidade fraca (sem ID)
     private Set<String> telefones = new HashSet<>(); // set<> não permite repetição
 
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
     

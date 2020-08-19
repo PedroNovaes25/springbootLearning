@@ -38,7 +38,7 @@ public class Produto implements Serializable{
     private Double preco;
     
     
-    @JsonBackReference // define que no outro lado da associação ja foram buscados os objetos 
+    @JsonIgnore // define que no outro lado da associação ja foram buscados os objetos 
     @ManyToMany //Fazendo um mapeamento muitos para muitos
     @JoinTable(name = "PRODUTO_CATEGORIA", 
             joinColumns = @JoinColumn(name= "produto_id"),

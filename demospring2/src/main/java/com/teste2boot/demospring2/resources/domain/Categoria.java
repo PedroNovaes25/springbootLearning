@@ -30,7 +30,7 @@ public class Categoria implements Serializable{
     private Integer id;
     private String nome;
     
-    @JsonManagedReference //essa definição fica do lado que vc quer que venha os objetos associados
+//    @JsonManagedReference //essa definição fica do lado que vc quer que venha os objetos associados
     @ManyToMany(mappedBy="categorias") //Aqui eu defino que um dos lados do mapeamento
     private List<Produto> produtos = new ArrayList<>();
 

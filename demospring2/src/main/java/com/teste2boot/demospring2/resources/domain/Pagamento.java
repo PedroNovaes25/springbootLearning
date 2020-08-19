@@ -6,6 +6,7 @@
 package com.teste2boot.demospring2.resources.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.teste2boot.demospring2.resources.domain.enums.EstadoPagamento;
 import java.io.Serializable;
 import java.util.Objects;
@@ -32,7 +33,8 @@ public abstract class Pagamento implements Serializable {
     private Integer id;
     private Integer estado;
     
-    @JsonBackReference
+//    @JsonBackReference
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name="pedido_id")
     @MapsId //A classe pagamento e Pedido possui o mesmo Id
