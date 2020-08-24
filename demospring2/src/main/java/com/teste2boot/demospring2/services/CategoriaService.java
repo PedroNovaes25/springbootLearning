@@ -9,6 +9,8 @@ import com.teste2boot.demospring2.repositories.CategoriaRepository;
 import com.teste2boot.demospring2.resources.domain.Categoria;
 import com.teste2boot.demospring2.services.exceptions.DataIntegrityException;
 import com.teste2boot.demospring2.services.exceptions.ObjectNotFoundException;
+
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -52,5 +54,9 @@ public class CategoriaService {
         {
             throw new DataIntegrityException("Não é possível excluir uma categoria que possui produto");
         }
+    }
+
+    public List<Categoria> findAll() {
+        return repo.findAll();
     }
 }

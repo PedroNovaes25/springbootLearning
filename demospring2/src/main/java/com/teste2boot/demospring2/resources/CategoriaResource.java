@@ -5,9 +5,14 @@
  */
 package com.teste2boot.demospring2.resources;
 
+import com.teste2boot.demospring2.dto.CategoriaDTO;
 import com.teste2boot.demospring2.resources.domain.Categoria;
 import com.teste2boot.demospring2.services.CategoriaService;
+
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
- *
  * @author guita
  */
 
 @RestController //Classe controladora rest
-@RequestMapping(value="/categorias") // ENDPOINT é como se fosse o endereço de url exemp(localhost:8080/categoria)
+@RequestMapping(value = "/categorias") // ENDPOINT é como se fosse o endereço de url exemp(localhost:8080/categoria)
 public class CategoriaResource {
 
     @Autowired
@@ -56,5 +60,14 @@ public class CategoriaResource {
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<CategoriaDTO>> findAll() {
+
+        List<Categoria> list = service.findAll();
+        List<CategoriaDTO> listDTO = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList()); // transforma
+        //a lista de categoria em uma lista de categoriaDTO
+        return ResponseEntity.ok().body(listDTO);
     }
 }
