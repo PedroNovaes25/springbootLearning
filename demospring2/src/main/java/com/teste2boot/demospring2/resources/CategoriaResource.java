@@ -25,19 +25,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController //Classe controladora rest
 @RequestMapping(value="/categorias") // ENDPOINT é como se fosse o endereço de url exemp(localhost:8080/categoria)
 public class CategoriaResource {
- 
+
     @Autowired
     private CategoriaService service;
-    
-    @RequestMapping(value="/{id}", method=RequestMethod.GET) // agora o endpoint terá o /categorias + ID
-    public ResponseEntity<Categoria> find(@PathVariable Integer id){ //o ID da url passará para o id da variável
-        
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET) // agora o endpoint terá o /categorias + ID
+    public ResponseEntity<Categoria> find(@PathVariable Integer id) { //o ID da url passará para o id da variável
+
         Categoria obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
-    
+
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Categoria obj){ //transforma o json em objeto
+    public ResponseEntity<Void> insert(@RequestBody Categoria obj) { //transforma o json em objeto
         obj = service.insert(obj);
         //Criando o URI
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -46,9 +46,15 @@ public class CategoriaResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id){
+    public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id) {
         obj.setId(id);
         obj = service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

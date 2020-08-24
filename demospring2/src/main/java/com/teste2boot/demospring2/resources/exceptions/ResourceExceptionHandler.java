@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.exceptions;
 
+import com.teste2boot.demospring2.services.exceptions.DataIntegrityException;
 import com.teste2boot.demospring2.services.exceptions.ObjectNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -27,5 +28,12 @@ public class ResourceExceptionHandler {
         StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(), e.getMessage(), System.currentTimeMillis());
         
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+
+    @ExceptionHandler(DataIntegrityException.class) // define que esse é um tratador de exceptions da classe entre parenteses
+    public ResponseEntity<StandardError> dataIntegrity(DataIntegrityException e, HttpServletRequest request)
+    {
+        StandardError err = new StandardError(HttpStatus.BAD_REQUEST.value(), e.getMessage(), System.currentTimeMillis());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
 }
