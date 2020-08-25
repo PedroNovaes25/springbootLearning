@@ -5,6 +5,7 @@
  */
 package com.teste2boot.demospring2.services;
 
+import com.teste2boot.demospring2.dto.CategoriaDTO;
 import com.teste2boot.demospring2.repositories.CategoriaRepository;
 import com.teste2boot.demospring2.resources.domain.Categoria;
 import com.teste2boot.demospring2.services.exceptions.DataIntegrityException;
@@ -57,6 +58,10 @@ public class CategoriaService {
         {
             throw new DataIntegrityException("Não é possível excluir uma categoria que possui produto");
         }
+    }
+
+    public Categoria fromDTO(CategoriaDTO objDto) {
+        return new Categoria(objDto.getId(), objDto.getNome());
     }
 
     public List<Categoria> findAll() {
