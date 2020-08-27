@@ -8,6 +8,7 @@ package com.teste2boot.demospring2.services;
 import com.teste2boot.demospring2.dto.CategoriaDTO;
 import com.teste2boot.demospring2.repositories.CategoriaRepository;
 import com.teste2boot.demospring2.resources.domain.Categoria;
+import com.teste2boot.demospring2.resources.domain.Cliente;
 import com.teste2boot.demospring2.services.exceptions.DataIntegrityException;
 import com.teste2boot.demospring2.services.exceptions.ObjectNotFoundException;
 
@@ -44,9 +45,16 @@ public class CategoriaService {
     }
 
     public Categoria update(Categoria obj){
-        find(obj.getId());
-        return repo.save(obj);
+        Categoria newObj = find(obj.getId());
+        updateData(newObj, obj);
+
+        return repo.save(newObj);
     }
+
+    private void updateData(Categoria newObj, Categoria obj) {
+        newObj.setNome(obj.getNome());
+    }
+
 
 
     public void delete(Integer id){
