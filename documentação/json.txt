@@ -1,0 +1,12 @@
+{
+   "nome" : "Francisco",
+    "email" : "pedro.novaes@gmail.com",
+    "cpfOuCnpj" : "48810885805",
+    "tipo" : 1,
+    "logradouro" : "Rua salto",
+    "numero" : "417",
+    "complemento" : "Apto 302",
+    "bairro" : "Caiuby",
+    "cep" : "0808030",
+    "telefone1" : "46492103"
+}

@@ -5,16 +5,11 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
 
 /**
  *
@@ -40,7 +35,7 @@ public class Endereco implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @ManyToOne
+    @ManyToOne //(cascade= CascadeType.PERSIST)
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 

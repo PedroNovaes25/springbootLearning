@@ -5,9 +5,7 @@
  */
 package com.teste2boot.demospring2.resources.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.teste2boot.demospring2.resources.domain.enums.TipoCliente;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,13 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -41,7 +33,7 @@ public class Cliente implements Serializable{
     private Integer tipo;
     
 //    @JsonManagedReference //A classe cliente pode serializar o enderço, mas não pode o contrario (se não vira loop)
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente"/*,cascade = CascadeType.ALL*/)
     private List<Endereco> enderecos = new ArrayList<>();
     
     @ElementCollection
