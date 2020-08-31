@@ -2,6 +2,7 @@ package com.teste2boot.demospring2.dto;
 
 import com.teste2boot.demospring2.resources.domain.Cliente;
 //import org.hibernate.validator.constraints.Email;
+import com.teste2boot.demospring2.services.validation.ClienteUpdate;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -9,7 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 //import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
     private static final long serialVersion = 1L;
 
