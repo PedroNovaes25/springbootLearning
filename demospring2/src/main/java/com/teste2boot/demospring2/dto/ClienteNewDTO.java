@@ -1,23 +1,45 @@
 package com.teste2boot.demospring2.dto;
 
+import com.teste2boot.demospring2.services.validation.ClienteInsert;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.io.Serializable;
 
+@ClienteInsert
 public class ClienteNewDTO implements Serializable {
     private static final long serialVersionUID= 1L;
 
 
+    @NotEmpty(message = "Preenchimento obrigatório")
+    @Length(min = 4, max = 100, message = "O tamanho deve estar entre 10 e 100 caracteres")
     private String nome;
+
+    @NotEmpty(message = "Preenchimento obrigatório")
+    @Email(message = "Email inválido")
     private String email;
+
+    @NotEmpty(message = "Preenchimento obrigatório")
     private String cpfOuCnpj;
+
     private Integer tipo;
 
+    @NotEmpty(message = "Preenchimento obrigatório")
     private String logradouro;
+
+    @NotEmpty(message = "Preenchimento obrigatório")
     private String numero;
+
     private String complemento;
     private String bairro;
+
+    @NotEmpty(message = "Preenchimento obrigatório")
     private String cep;
 
+    @NotEmpty(message = "Preenchimento obrigatório")
     private String telefone1;
+
     private String telefone2;
     private String telefone3;
 
