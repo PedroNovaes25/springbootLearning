@@ -33,7 +33,7 @@ public class Cliente implements Serializable{
     private Integer tipo;
     
 //    @JsonManagedReference //A classe cliente pode serializar o enderço, mas não pode o contrario (se não vira loop)
-    @OneToMany(mappedBy = "cliente"/*,cascade = CascadeType.ALL*/)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL) //se o Cliente for apagado, os endereço também será em cascata
     private List<Endereco> enderecos = new ArrayList<>();
     
     @ElementCollection
