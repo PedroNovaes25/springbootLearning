@@ -54,12 +54,12 @@ public class Pedido implements Serializable {
     @OneToMany(mappedBy = "id.pedido")
     private Set<ItemPedido> itens = new HashSet<>(); //Set = garante que não tenha item repetido
 
-    public Set<ItemPedido> getItems() {
+    public Set<ItemPedido> getItens() {
         return itens;
     }
 
-    public void setItems(Set<ItemPedido> items) {
-        this.itens = items;
+    public void setItens(Set<ItemPedido> itens) {
+        this.itens = itens;
     }
     
     public Pedido() {
@@ -89,7 +89,7 @@ public class Pedido implements Serializable {
         this.Id = Id;
     }
 
-    public Date getInstance() {
+    public Date getInstante() {
         return instante;
     }
 
