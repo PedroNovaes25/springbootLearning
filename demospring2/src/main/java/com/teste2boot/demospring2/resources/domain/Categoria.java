@@ -34,14 +34,6 @@ public class Categoria implements Serializable{
     @ManyToMany(mappedBy="categorias") //Aqui eu defino que um dos lados do mapeamento
     private List<Produto> produtos = new ArrayList<>();
 
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
     public Categoria() {
     }
 
@@ -49,6 +41,14 @@ public class Categoria implements Serializable{
         super();
         this.id = id;
         this.nome = nome;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 
     public String getNome() {
